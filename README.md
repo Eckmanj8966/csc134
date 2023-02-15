@@ -1,2 +1,2 @@
 # csc134
-CSC134 Repository
+CSC 134 Repository
