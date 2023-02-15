@@ -17,4 +17,3 @@ Relevant assignments for today (2/15):
 # Heading
 ## H2
 **bold text**
-*italicized text*
