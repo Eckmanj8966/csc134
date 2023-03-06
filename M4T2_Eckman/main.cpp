@@ -28,7 +28,7 @@ void option_one() {
 void option_two() {
   // dice roller
   int d6_1, d6_2, d6_3; // 3 dice (6 sided)
-  int total; // 3d6
+  int total;            // 3d6
   int seed = time(0);
   srand(seed);
 
@@ -43,6 +43,36 @@ void option_two() {
 }
 void option_three() {
   // sum and average of dice
+  // roll 3d6, six times
+  // find the sum and average
+  // TODO: reroll if it's not high enough (average <9)
+  int total = 0;        // the total of all stats
+  int d6_1, d6_2, d6_3; // 3 dice (6 sided)
+  int roll;             // 3d6 (one stat roll)
+  int seed = time(0);
+  srand(seed);
+  for (int i=1; i<=6; i++) {
+    // roll dice
+    d6_1 = (rand() % 6) + 1; // 0-5, then add one
+    d6_2 = (rand() % 6) + 1;
+    d6_3 = (rand() % 6) + 1;
+    roll = d6_1 + d6_2 + d6_3;
+    // print result
+    cout << "Roll #" << i << ": ";
+    cout << d6_1 << " + " << d6_2 << " + " << d6_3;
+    cout << " = " << roll << endl;
+    // add to the total
+    total += roll;
+  }
+  // print the total
+  cout << "total of all stats: " << total << endl;
+  int average = total / 6;  // note: we're dropping the decimal
+  cout << "average roll = " << average << endl;
+  if (average <= 9) {
+    cout << "Low stats, you can reroll."<< endl;
+  } else {
+    cout << "A playable character! good luck." << endl;
+  }
 }
 
 // There is no option 4 function, it's just quit
@@ -75,7 +105,7 @@ int main()
     option_two();   // the dice roller
   }
   if (choice == 3) {
-    option_three();
+    option_three(); // character roller
   }
   if (choice == 4) {
     cout << "Quitting time!" << endl;
